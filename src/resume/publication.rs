@@ -2,10 +2,10 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Publication {
-    pub name: String,
-    pub publisher: String,
+    pub name: Option<String>,
+    pub publisher: Option<String>,
     #[serde(rename = "releaseDate")]
-    pub release_date: String,
-    pub url: String,
-    pub summary: String,
+    pub release_date: Option<String>,
+    pub url: Option<String>,
+    pub summary: Option<String>,
 }

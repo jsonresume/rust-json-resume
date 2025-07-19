@@ -8,13 +8,13 @@ use profile::Profile;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Basics {
-    pub name: String,
-    pub label: String,
-    pub image: String,
-    pub email: String,
-    pub phone: String,
-    pub url: String,
-    pub summary: String,
-    pub location: Location,
+    pub name: Option<String>,
+    pub label: Option<String>,
+    pub image: Option<String>,
+    pub email: Option<String>,
+    pub phone: Option<String>,
+    pub url: Option<String>,
+    pub summary: Option<String>,
+    pub location: Option<Location>,
     pub profiles: Vec<Profile>,
 }
