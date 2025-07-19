@@ -1,30 +1,30 @@
 use serde::{Deserialize, Serialize};
 
-mod basics;
-mod work;
-mod volunteer;
-mod education;
 mod award;
+mod basics;
 mod certificate;
-mod publication;
-mod skill;
-mod language;
+mod education;
 mod interest;
-mod reference;
+mod language;
 mod project;
+mod publication;
+mod reference;
+mod skill;
+mod volunteer;
+mod work;
 
-use basics::Basics;
-use work::Work;
-use volunteer::Volunteer;
-use education::Education;
 use award::Award;
+use basics::Basics;
 use certificate::Certificate;
-use publication::Publication;
-use skill::Skill;
-use language::Language;
+use education::Education;
 use interest::Interest;
-use reference::Reference;
+use language::Language;
 use project::Project;
+use publication::Publication;
+use reference::Reference;
+use skill::Skill;
+use volunteer::Volunteer;
+use work::Work;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Resume {
