@@ -2,15 +2,15 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Education {
-    pub institution: String,
-    pub url: String,
-    pub area: String,
+    pub institution: Option<String>,
+    pub url: Option<String>,
+    pub area: Option<String>,
     #[serde(rename = "studyType")]
-    pub study_type: String,
+    pub study_type: Option<String>,
     #[serde(rename = "startDate")]
-    pub start_date: String,
+    pub start_date: Option<String>,
     #[serde(rename = "endDate")]
-    pub end_date: String,
-    pub score: String,
-    pub courses: Vec<String>,
+    pub end_date: Option<String>,
+    pub score: Option<String>,
+    pub courses: Option<Vec<String>>,
 }

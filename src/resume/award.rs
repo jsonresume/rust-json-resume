@@ -2,8 +2,8 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Award {
-    pub title: String,
-    pub date: String,
-    pub awarder: String,
-    pub summary: String,
+    pub title: Option<String>,
+    pub date: Option<String>,
+    pub awarder: Option<String>,
+    pub summary: Option<String>,
 }

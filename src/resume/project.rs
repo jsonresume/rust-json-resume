@@ -2,17 +2,17 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Project {
-    pub name: String,
-    pub description: String,
+    pub name: Option<String>,
+    pub description: Option<String>,
     pub highlights: Vec<String>,
     pub keywords: Vec<String>,
     #[serde(rename = "startDate")]
-    pub start_date: String,
+    pub start_date: Option<String>,
     #[serde(rename = "endDate")]
-    pub end_date: String,
+    pub end_date: Option<String>,
     pub roles: Vec<String>,
-    pub url: String,
-    pub entity: String,
+    pub url: Option<String>,
+    pub entity: Option<String>,
     #[serde(rename = "type")]
-    pub kind: String,
+    pub kind: Option<String>,
 }
