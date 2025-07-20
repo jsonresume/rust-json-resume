@@ -1,4 +1,5 @@
 use serde::{Deserialize, Serialize};
+use serde_valid::Validate;
 
 mod award;
 mod basics;
@@ -26,7 +27,7 @@ use skill::Skill;
 use volunteer::Volunteer;
 use work::Work;
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Validate)]
 pub struct Resume {
     pub basics: Basics,
     pub work: Vec<Work>,
