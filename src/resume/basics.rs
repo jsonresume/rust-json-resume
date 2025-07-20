@@ -5,8 +5,8 @@ use serde_valid::Validate;
 mod location;
 mod profile;
 
-use location::Location;
-use profile::Profile;
+pub use location::Location;
+pub use profile::Profile;
 
 #[derive(Debug, Serialize, Deserialize, Validate)]
 pub struct Basics {
