@@ -14,18 +14,20 @@ mod skill;
 mod volunteer;
 mod work;
 
-use award::Award;
-use basics::Basics;
-use certificate::Certificate;
-use education::Education;
-use interest::Interest;
-use language::Language;
-use project::Project;
-use publication::Publication;
-use reference::Reference;
-use skill::Skill;
-use volunteer::Volunteer;
-use work::Work;
+pub use award::Award;
+pub use basics::Basics;
+pub use basics::Location;
+pub use basics::Profile;
+pub use certificate::Certificate;
+pub use education::Education;
+pub use interest::Interest;
+pub use language::Language;
+pub use project::Project;
+pub use publication::Publication;
+pub use reference::Reference;
+pub use skill::Skill;
+pub use volunteer::Volunteer;
+pub use work::Work;
 
 #[derive(Debug, Serialize, Deserialize, Validate)]
 pub struct Resume {
