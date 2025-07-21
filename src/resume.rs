@@ -31,16 +31,103 @@ pub use work::Work;
 
 #[derive(Debug, Serialize, Deserialize, Validate)]
 pub struct Resume {
-    pub basics: Basics,
+    #[validate]
+    pub basics: Option<Basics>,
+    #[validate]
     pub work: Vec<Work>,
+    #[validate]
     pub volunteer: Vec<Volunteer>,
+    #[validate]
     pub education: Vec<Education>,
+    #[validate]
     pub awards: Vec<Award>,
+    #[validate]
     pub certificates: Vec<Certificate>,
+    #[validate]
     pub publications: Vec<Publication>,
+    #[validate]
     pub skills: Vec<Skill>,
+    #[validate]
     pub languages: Vec<Language>,
+    #[validate]
     pub interests: Vec<Interest>,
+    #[validate]
     pub references: Vec<Reference>,
+    #[validate]
     pub projects: Vec<Project>,
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::resume::{Basics, Resume};
+
+    #[test]
+    fn test_resume_validation() {
+        let basics = Basics {
+            name: Some("John Doe".to_string()),
+            label: Some("Programmer".to_string()),
+            image: Some("https://example.com/image.jpg".to_string()),
+            email: Some("john.doe@example.com".to_string()),
+            phone: Some("+1234567890".to_string()),
+            url: Some("https://johndoe.com".to_string()),
+            summary: Some("A passionate developer.".to_string()),
+            location: None,
+            profiles: vec![],
+        };
+
+        let resume = Resume {
+            basics: Some(basics),
+            work: vec![],
+            volunteer: vec![],
+            education: vec![],
+            awards: vec![],
+            certificates: vec![],
+            publications: vec![],
+            skills: vec![],
+            languages: vec![],
+            interests: vec![],
+            references: vec![],
+            projects: vec![],
+        };
+
+        // Validate the resume. This will return Result<(), ValidationErrors>
+        let result = resume.validate();
+        assert!(
+            result.is_ok(),
+            "Resume validation failed: {:?}",
+            result.err()
+        );
+    }
+
+    #[test]
+    fn test_resume_validation_invalid() {
+        let resume = Resume {
+            basics: Some(Basics {
+                name: Some("John Doe".to_string()),
+                label: Some("Programmer".to_string()),
+                image: Some("https://example.com/image.jpg".to_string()),
+                email: Some("not-an-email".to_string()),
+                phone: Some("+1234567890".to_string()),
+                url: Some("https://johndoe.com".to_string()),
+                summary: Some("A passionate developer.".to_string()),
+                location: None,
+                profiles: vec![],
+            }),
+            work: vec![],
+            volunteer: vec![],
+            education: vec![],
+            awards: vec![],
+            certificates: vec![],
+            publications: vec![],
+            skills: vec![],
+            languages: vec![],
+            interests: vec![],
+            references: vec![],
+            projects: vec![],
+        };
+
+        let result = resume.validate();
+        assert!(result.is_err(), "Resume validation should fail");
+    }
 }
